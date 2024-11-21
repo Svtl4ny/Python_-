@@ -4,20 +4,13 @@ import json
 
 INPUT_FILENAME = "input.csv"
 OUTPUT_FILENAME = "output.json"
-data = []
 
 def task() -> None:
     with open(INPUT_FILENAME, "r") as inp:
-        reader = csv.DictReader(inp)
+        data = [row for row in csv.DictReader(inp)]
 
-        for i in reader:
-            data.append(i)
-            with open(OUTPUT_FILENAME, "w") as out:
-                json.dump(data, out, indent=4)
-
-
-
-
+    with open(OUTPUT_FILENAME, "w") as out:
+        json.dump(data, out, indent=4)
 
 if __name__ == '__main__':
     # Нужно для проверки
